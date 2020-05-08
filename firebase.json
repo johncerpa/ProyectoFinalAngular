@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "operadores",
+      "public": "dist/operadores",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

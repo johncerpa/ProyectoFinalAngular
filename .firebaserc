@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "parcialoperadores": {
+      "hosting": {
+        "operadores": [
+          "parcialoperadores"
+        ]
+      }
+    }
+  }
+}
