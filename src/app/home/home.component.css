@@ -1,0 +1,7 @@
+.altura {
+  min-height: 80vh;
+}
+
+hr {
+  border: 1px solid lightslategray;
+}
