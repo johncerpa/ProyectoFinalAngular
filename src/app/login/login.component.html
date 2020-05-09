@@ -11,7 +11,7 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-10">
-            <form>
+            <div>
               <div class="form-group button-icon">
                 <span
                   ><i class="material-icons-outlined text-primary mr-2"
@@ -19,6 +19,7 @@
                   ></span
                 >
                 <input
+                  #userEmail
                   id="correo"
                   type="email"
                   placeholder="Correo"
@@ -32,6 +33,7 @@
                   ></span
                 >
                 <input
+                  #userPassword
                   id="clave"
                   type="password"
                   placeholder="Contraseña"
@@ -45,8 +47,10 @@
                 <a href="">¿Olvidaste tu contraseña?</a>
               </div>
               <button
+                (click)="
+                  authService.ingresar(userEmail.value, userPassword.value)
+                "
                 id="btnIngresar"
-                type="submit"
                 class="btn btn-outline-dark btn-lg btn-block mb-4"
               >
                 <div class="button-icon">
@@ -59,7 +63,6 @@
               <button
                 id="btnRegistrar"
                 routerLink="/registro"
-                type="submit"
                 class="btn btn-outline-dark btn-lg btn-block"
               >
                 <div class="button-icon">
@@ -69,7 +72,7 @@
                   Registrar
                 </div>
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
