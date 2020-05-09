@@ -2,6 +2,11 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+interface Usuario {
+  nombreEmpresa: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +26,12 @@ export class AuthService {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         console.log(JSON.parse(localStorage.getItem('user')));
+
+        console.log(user.uid);
+        this.informacionPerfil(user.uid).subscribe((value) => {
+          const userLogged = value[0];
+          localStorage.setItem('nombreEmpresa', userLogged.nombreEmpresa);
+        });
       } else {
         // User is logged out
         this.userData = null;
@@ -44,6 +55,12 @@ export class AuthService {
 
   get estaLogueado(): boolean {
     return !!localStorage.getItem('user');
+  }
+
+  informacionPerfil(id: string): Observable<any[]> {
+    return this.afs
+      .collection('usuario', (ref) => ref.where('id', '==', id))
+      .valueChanges();
   }
 
   salir() {
