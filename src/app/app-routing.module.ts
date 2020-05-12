@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/guard/auth.guard';
 import { LoggedInGuard } from './services/guard/logged-in.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ingreso', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
     canActivate: [LoggedInGuard],
   },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'perfil', component: ProfileComponent },
 ];
 
 @NgModule({
