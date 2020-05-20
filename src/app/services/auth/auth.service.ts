@@ -110,7 +110,7 @@ export class AuthService {
           nombreEmpresa: informacion.nombreEmpresa,
           tipoDocumento: informacion.tipoDocumento,
           numeroDocumento: informacion.numeroDocumento,
-          correo: informacion.numeroDocumento,
+          correo: informacion.correo,
           telefono: informacion.telefono,
           id,
           cargo: 'Administrador',

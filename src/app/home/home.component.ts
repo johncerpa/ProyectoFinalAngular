@@ -1,18 +1,15 @@
-import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../services/users/users.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
-  operadores: Observable<any[]>;
+export class HomeComponent implements OnInit {
+  mostrarSpinner = false;
 
-  constructor(private firestore: AngularFirestore) {
-    this.operadores = this.firestore
-      .collection('usuario', (ref) => ref.where('cargo', '==', 'Operador'))
-      .valueChanges();
-  }
+  constructor(public usersService: UsersService) {}
+
+  ngOnInit(): void {}
 }
