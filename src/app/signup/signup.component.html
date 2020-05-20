@@ -15,10 +15,11 @@
   <div class="col-md-12 my-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form>
+        <div>
           <div class="form-group">
             <label>Primer nombre del representante legal</label>
             <input
+              [(ngModel)]="primerNombre"
               id="primerNombre"
               type="text"
               class="form-control"
@@ -28,6 +29,7 @@
           <div class="form-group">
             <label>Segundo nombre del representante legal</label>
             <input
+              [(ngModel)]="apellido"
               id="apellido"
               type="text"
               class="form-control"
@@ -48,6 +50,7 @@
 
             <label>Número del documento</label>
             <input
+              [(ngModel)]="numeroDocumento"
               id="numeroDocumento"
               type="text"
               class="form-control"
@@ -57,6 +60,7 @@
           <div class="form-group">
             <label>Teléfono del representante legal</label>
             <input
+              [(ngModel)]="telefono"
               id="telefono"
               type="text"
               class="form-control"
@@ -66,6 +70,7 @@
           <div class="form-group">
             <label>Nombre de la empresa</label>
             <input
+              [(ngModel)]="nombreEmpresa"
               id="nombreEmpresa"
               type="text"
               class="form-control"
@@ -74,11 +79,19 @@
           </div>
           <div class="form-group">
             <label>Imagen de la empresa</label>
-            <input id="imagen" type="file" class="form-control-file" />
+            <input
+              #imagenInput
+              id="imagen"
+              type="file"
+              accept="image/*"
+              class="form-control-file"
+              (change)="obtenerImg(imagenInput)"
+            />
           </div>
           <div class="form-group">
             <label>Correo electrónico</label>
             <input
+              [(ngModel)]="correo"
               id="correo"
               type="email"
               class="form-control"
@@ -88,6 +101,7 @@
           <div class="form-group">
             <label>Contraseña</label>
             <input
+              [(ngModel)]="clave"
               type="password"
               class="form-control"
               minlength="6"
@@ -96,7 +110,7 @@
             />
             <small class="form-text text-muted"
               >La clave debe contener mínimo 6 caracteres, debe contener por lo
-              menos una letra y por lo menos un número.</small
+              menos una letra, un número y un caracter especial.</small
             >
           </div>
 
@@ -104,15 +118,17 @@
             id="btnRegistrar"
             type="submit"
             class="btn btn-outline-primary"
+            (click)="registrar()"
           >
             Registrar
           </button>
           <div
+            *ngIf="mostrarSpinner"
             style="margin-left: 30px;"
             id="spinner"
-            class="spinner-border text-danger invisible"
+            class="spinner-border text-danger"
           ></div>
-        </form>
+        </div>
       </div>
     </div>
   </div>

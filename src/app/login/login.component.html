@@ -19,7 +19,7 @@
                   ></span
                 >
                 <input
-                  #userEmail
+                  [(ngModel)]="correo"
                   id="correo"
                   type="email"
                   placeholder="Correo"
@@ -33,7 +33,7 @@
                   ></span
                 >
                 <input
-                  #userPassword
+                  [(ngModel)]="clave"
                   id="clave"
                   type="password"
                   placeholder="Contraseña"
@@ -47,9 +47,7 @@
                 <a href="">¿Olvidaste tu contraseña?</a>
               </div>
               <button
-                (click)="
-                  authService.ingresar(userEmail.value, userPassword.value)
-                "
+                (click)="ingresar()"
                 id="btnIngresar"
                 class="btn btn-outline-dark btn-lg btn-block mb-4"
               >

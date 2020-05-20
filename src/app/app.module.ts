@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -14,13 +15,21 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, SignupComponent, NavbarComponent, ProfileComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    SignupComponent,
+    NavbarComponent,
+    ProfileComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAnalyticsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

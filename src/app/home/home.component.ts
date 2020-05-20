@@ -11,7 +11,7 @@ export class HomeComponent {
   operadores: Observable<any[]>;
 
   constructor(private firestore: AngularFirestore) {
-    this.operadores = firestore
+    this.operadores = this.firestore
       .collection('usuario', (ref) => ref.where('cargo', '==', 'Operador'))
       .valueChanges();
   }
