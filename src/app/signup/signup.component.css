@@ -1,8 +1,7 @@
 .signup__image {
-  background-image: url(../../assets/images/claudio-hirschberger-VI1UCQe4U4A-unsplash.jpg);
-  background-position: bottom right;
+  background-image: url(../../assets/images/victor-garcia-UoIiVYka3VY-unsplash.jpg);
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   right: 0;
 }
