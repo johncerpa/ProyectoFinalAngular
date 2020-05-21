@@ -1,23 +1,24 @@
-<div class="container-fluid">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/">
-      <img
-        src="../../assets/images/icono.svg"
-        width="30"
-        height="30"
-        class="d-inline-block align-top"
-        alt=""
-      />
-      Registro
-    </a>
-  </nav>
-
-  <div class="col-md-12 my-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
+<div class="row no-gutters">
+  <div class="col-12 col-md-7 mb-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" routerLink="/">
+        <img
+          src="../../assets/images/icono.svg"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
+        Registro
+      </a>
+    </nav>
+    <div class="row no-gutters justify-content-center mt-5">
+      <div class="col-10 col-md-8">
         <div>
           <div class="form-group">
-            <label>Primer nombre del representante legal</label>
+            <label for="primerNombre"
+              >Primer nombre del representante legal</label
+            >
             <input
               [(ngModel)]="primerNombre"
               id="primerNombre"
@@ -27,7 +28,7 @@
             />
           </div>
           <div class="form-group">
-            <label>Segundo nombre del representante legal</label>
+            <label for="apellido">Segundo nombre del representante legal</label>
             <input
               [(ngModel)]="apellido"
               id="apellido"
@@ -37,18 +38,18 @@
             />
           </div>
           <div class="form-group">
-            <label>Tipo de documento</label><br />
+            <label for="cedulaNacional">Tipo de documento</label><br />
             <input id="cedulaNacional" type="radio" name="tipo" value="C.C." />
-            <label class="ml-2">C.C.</label><br />
+            <label class="ml-2" for="cedulaNacional">C.C.</label><br />
             <input
               id="cedulaExtranjera"
               type="radio"
               name="tipo"
               value="C.E."
             />
-            <label class="ml-2">C.E.</label><br />
+            <label class="ml-2" for="cedulaExtranjera">C.E.</label><br />
 
-            <label>Número del documento</label>
+            <label for="numeroDocumento">Número del documento</label>
             <input
               [(ngModel)]="numeroDocumento"
               id="numeroDocumento"
@@ -58,7 +59,7 @@
             />
           </div>
           <div class="form-group">
-            <label>Teléfono del representante legal</label>
+            <label for="telefono">Teléfono del representante legal</label>
             <input
               [(ngModel)]="telefono"
               id="telefono"
@@ -68,7 +69,7 @@
             />
           </div>
           <div class="form-group">
-            <label>Nombre de la empresa</label>
+            <label for="nombreEmpresa">Nombre de la empresa</label>
             <input
               [(ngModel)]="nombreEmpresa"
               id="nombreEmpresa"
@@ -78,7 +79,7 @@
             />
           </div>
           <div class="form-group">
-            <label>Imagen de la empresa</label>
+            <label for="imagen">Imagen de la empresa</label>
             <input
               #imagenInput
               id="imagen"
@@ -89,7 +90,7 @@
             />
           </div>
           <div class="form-group">
-            <label>Correo electrónico</label>
+            <label for="correo">Correo electrónico</label>
             <input
               [(ngModel)]="correo"
               id="correo"
@@ -99,7 +100,7 @@
             />
           </div>
           <div class="form-group">
-            <label>Contraseña</label>
+            <label for="clave">Contraseña</label>
             <input
               [(ngModel)]="clave"
               type="password"
@@ -132,4 +133,7 @@
       </div>
     </div>
   </div>
+  <div
+    class="d-none d-md-block col-md-5 signup__image vh-100 position-fixed"
+  ></div>
 </div>

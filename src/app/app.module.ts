@@ -14,6 +14,7 @@ import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthService } from './services/auth/auth.service';
+import { SignupOperatorComponent } from './signup-operator/signup-operator.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AuthService } from './services/auth/auth.service';
     SignupComponent,
     NavbarComponent,
     ProfileComponent,
+    SignupOperatorComponent,
   ],
   imports: [
     BrowserModule,
