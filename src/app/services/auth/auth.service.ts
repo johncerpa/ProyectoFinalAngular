@@ -6,12 +6,14 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import Admin from '../interfaces/admin';
 import Respuesta from '../interfaces/respuesta';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userData: any;
+  userAuth: any;
+  userInfo: any;
 
   constructor(
     public firestore: AngularFirestore,
@@ -22,15 +24,15 @@ export class AuthService {
   ) {
     this.auth.authState.subscribe((user) => {
       if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
+        this.userAuth = user;
+        localStorage.setItem('user', JSON.stringify(this.userAuth));
 
         this.informacionPerfil(user.uid).subscribe((value) => {
-          const userLogged = value[0];
-          localStorage.setItem('nombreEmpresa', userLogged.nombreEmpresa);
+          this.userInfo = value[0];
+          localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
         });
       } else {
-        this.userData = null;
+        this.userAuth = null;
         localStorage.removeItem('user');
       }
     });
@@ -66,23 +68,19 @@ export class AuthService {
       informacion.clave
     );
 
-    if (!respuesta.exito) {
-      return respuesta;
-    }
-
-    respuesta = await this.crearDocAdmin(
-      informacion,
-      respuesta.contenido.user.uid
-    );
+    const userId = respuesta.contenido.user.uid;
 
     if (!respuesta.exito) {
       return respuesta;
     }
 
-    respuesta = await this.subirImagen(
-      respuesta.contenido.id,
-      informacion.imagen
-    );
+    respuesta = await this.crearDocAdmin(informacion, userId);
+
+    if (!respuesta.exito) {
+      return respuesta;
+    }
+
+    respuesta = await this.subirImagen(informacion.imagen, userId);
 
     return respuesta;
   }
@@ -122,7 +120,7 @@ export class AuthService {
     }
   }
 
-  async subirImagen(id: string, imagen: File): Promise<Respuesta> {
+  async subirImagen(imagen: File, id: string): Promise<Respuesta> {
     try {
       const respuestaImg = await this.storage
         .ref(`/imgPerfil-${id}`)

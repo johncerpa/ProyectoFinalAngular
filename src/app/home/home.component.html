@@ -2,23 +2,12 @@
 <div class="container-fluid">
   <div class="row justify-content-between ml-3 mr-3 mb-3" id="content">
     <div class="gmd-3 col-md-12 pl-4 mb-3 border rounded altura pt-2 pb-3">
-      <button id="btnRegistrarToggle" class="btn btn-outline-dark mt-2 mb-2">
+      <button id="btnRegistrar" class="btn btn-outline-dark mt-2 mb-2">
         <div class="button-icon">
           <i class="material-icons text-primary mr-2">add_circle_outline</i
           >Registrar operador
         </div>
       </button>
-      <hr />
-      <div id="tituloRegistrar" class="d-none mb-3">
-        <h2>Registrar operador</h2>
-      </div>
-      <div id="tituloCrearCuestionario" class="d-none mb-3">
-        <h2>Crear cuestionario</h2>
-      </div>
-      <div id="tituloEditarOperador" class="d-none mb-3">
-        <h2>Editar operador</h2>
-      </div>
-      <hr />
       <div class="row mt-2 mb-2">
         <div class="col-md-9">
           <input
@@ -40,10 +29,20 @@
       </div>
       <div id="operadores" class="row">
         <div
-          *ngFor="let operador of usersService.operadores | async"
+          *ngFor="
+            let operador of usersService.operadores | async;
+            let i = index
+          "
           class="col-md-3 mb-2 mt-2"
         >
           <div class="card gmd-3">
+            <img
+              height="256"
+              width="256"
+              class="card-img-top"
+              [src]="usersService.imagenes[i]"
+              alt="Card image cap"
+            />
             <div class="card-body">
               <h6 class="card-title">
                 <span style="font-weight: bold;">Nombre:</span>
