@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/guard/auth.guard';
 import { LoggedInGuard } from './services/guard/logged-in.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { SignupOperatorComponent } from './signup-operator/signup-operator.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ingreso', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'perfil', component: ProfileComponent },
+  { path: 'registroOperador', component: SignupOperatorComponent },
 ];
 
 @NgModule({

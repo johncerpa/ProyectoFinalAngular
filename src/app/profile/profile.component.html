@@ -16,13 +16,13 @@
         <img
           id="imagen"
           style="height: 200px; width: 200px;"
-          src="/assets/images/userPlaceholder.jpg"
+          src="{{ usersService.imagenPerfil }}"
           class="rounded-circle img-fluid img-thumbnail border-danger"
         />
       </div>
       <div id="nroEmpleados" class="row justify-content-center mb-3">
         <h5>
-          <span style="font-weight: bold;">Número de empleados: </span>
+          <span style="font-weight: bold;">Número de operadores: </span>
           {{ usersService.nroOperadores }}
         </h5>
       </div>
