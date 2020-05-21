@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AngularFirestoreCollection } from '@angular/fire/firestore/public_api';
 import { AngularFireStorage } from '@angular/fire/storage';
+import Operador from '../interfaces/operador';
 
 @Injectable({
   providedIn: 'root',
@@ -60,9 +61,5 @@ export class UsersService {
       .toPromise();
 
     return url;
-  }
-
-  agregarOperador(operador) {
-    this.coleccionOperadores.add(operador);
   }
 }

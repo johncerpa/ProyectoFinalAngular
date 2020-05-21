@@ -38,7 +38,7 @@ export function validarAdmin(informacion: Admin) {
   if (apellido.length === 0) {
     return {
       valido: false,
-      problema: 'El segundo nombre no puede estar vacio, revisa y escribelo.',
+      problema: 'El apellido no puede estar vacio, revisa y escribelo.',
     };
   }
 
@@ -109,21 +109,6 @@ export function validarOperador(informacion) {
     clave,
   } = informacion;
 
-  if (!validarClave(clave)) {
-    return {
-      valido: false,
-      problema:
-        'La clave debe contener mínimo 6 caracteres, debe contener por lo menos una letra y por lo menos un número.',
-    };
-  }
-
-  if (!validarCorreo(correo)) {
-    return {
-      valido: false,
-      problema: 'El correo es inválido, revisa y escribelo nuevamente.',
-    };
-  }
-
   if (primerNombre.length === 0) {
     return {
       valido: false,
@@ -134,7 +119,29 @@ export function validarOperador(informacion) {
   if (apellido.length === 0) {
     return {
       valido: false,
-      problema: 'El segundo nombre no puede estar vacio, revisa y escribelo.',
+      problema: 'El apellido no puede estar vacio, revisa y escribelo.',
+    };
+  }
+
+  if (direccion.length === 0) {
+    return {
+      valido: false,
+      problema: 'La dirección no puede estar vacia, revisa y escribela.',
+    };
+  }
+
+  if (!validarCorreo(correo)) {
+    return {
+      valido: false,
+      problema: 'El correo es inválido, revisa y escribelo nuevamente.',
+    };
+  }
+
+  if (!validarClave(clave)) {
+    return {
+      valido: false,
+      problema:
+        'La clave debe contener mínimo 6 caracteres, debe contener por lo menos una letra y por lo menos un número.',
     };
   }
 
@@ -142,14 +149,6 @@ export function validarOperador(informacion) {
     return {
       valido: false,
       problema: 'Debes incluir una imagen de perfil.',
-    };
-  }
-
-  if (direccion.length === 0) {
-    return {
-      valido: false,
-      problema:
-        'Tu dirección no puede estar vacia, revisa y escribela nuevamente.',
     };
   }
 

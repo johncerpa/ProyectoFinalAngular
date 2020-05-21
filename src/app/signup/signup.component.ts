@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  // Modelo
+  // Entrada
   primerNombre = '';
   apellido = '';
   numeroDocumento = '';

@@ -5,8 +5,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import Admin from '../interfaces/admin';
+import Operador from '../interfaces/operador';
 import Respuesta from '../interfaces/respuesta';
-import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,35 +31,46 @@ export class AuthService {
           this.userInfo = value[0];
           localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
         });
+
+        this.router.navigate(['home']);
       } else {
         this.userAuth = null;
-        localStorage.removeItem('user');
       }
     });
   }
 
-  async ingresar(email, password) {
+  async ingresar(email, password): Promise<Respuesta> {
     return this.auth
       .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['home']);
-        });
+      .then((resultado) => {
+        return { exito: true, contenido: resultado };
       })
       .catch((error) => {
-        console.log(error);
-        return error;
+        return { exito: false, contenido: error };
       });
   }
 
-  async registrarOperador(informacion: Admin) {
-    return this.auth
-      .createUserWithEmailAndPassword(informacion.correo, informacion.clave)
-      .then((result) => {})
-      .catch((error) => {
-        console.log(error);
-        return error;
-      });
+  async registrarOperador(informacion: Operador) {
+    let respuesta = await this.crearUsuarioEnFb(
+      informacion.correo,
+      informacion.clave
+    );
+
+    const userId = respuesta.contenido.user.uid;
+
+    if (!respuesta.exito) {
+      return respuesta;
+    }
+
+    respuesta = await this.crearDocOperador(informacion, userId);
+
+    if (!respuesta.exito) {
+      return respuesta;
+    }
+
+    respuesta = await this.subirImagen(informacion.imagen, userId);
+
+    return respuesta;
   }
 
   async registrarAdmin(informacion: Admin): Promise<Respuesta> {
@@ -120,6 +131,29 @@ export class AuthService {
     }
   }
 
+  async crearDocOperador(
+    informacion: Operador,
+    id: string
+  ): Promise<Respuesta> {
+    try {
+      const respuestaDoc = await this.firestore
+        .collection<Operador>('usuario')
+        .add({
+          primerNombre: informacion.primerNombre,
+          apellido: informacion.apellido,
+          direccion: informacion.direccion,
+          correo: informacion.correo,
+          nombreEmpresa: informacion.nombreEmpresa,
+          id,
+          cargo: 'Operador',
+        });
+
+      return { exito: true, contenido: respuestaDoc };
+    } catch (error) {
+      return { exito: false, contenido: error };
+    }
+  }
+
   async subirImagen(imagen: File, id: string): Promise<Respuesta> {
     try {
       const respuestaImg = await this.storage
@@ -145,7 +179,7 @@ export class AuthService {
   salir() {
     return this.auth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['/ingreso']);
+      this.router.navigate(['ingreso']);
     });
   }
 }

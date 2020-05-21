@@ -1,11 +1,9 @@
 export default interface Operador {
   primerNombre: string;
   apellido: string;
-  tipoDocumento: string;
-  numeroDocumento: string;
-  telefono: string;
-  nombreEmpresa: string;
+  direccion: string;
   correo: string;
+  nombreEmpresa: string;
   // Optional
   imagen?: File;
   clave?: string;
