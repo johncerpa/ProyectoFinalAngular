@@ -37,17 +37,22 @@ export class AuthService {
           localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
         });
 
+        const respuestaTipo = await this.getTipoOperador(user.uid);
         const estaHabilitado = await this.comprobarHabilitado(user.uid);
 
-        if (estaHabilitado) {
-          this.router.navigate(['home']);
-        } else {
+        if (!estaHabilitado) {
           Swal.fire({
             title: 'Error!',
             text: 'Este usuario está deshabilitado',
             icon: 'error',
             onClose: () => this.salir(),
           });
+        }
+
+        if (respuestaTipo.contenido === 'Administrador') {
+          this.router.navigate(['home']);
+        } else {
+          this.router.navigate(['homeOperador']);
         }
       } else {
         this.userAuth = null;
@@ -192,6 +197,15 @@ export class AuthService {
     return this.firestore
       .collection('usuario', (ref) => ref.where('id', '==', id))
       .valueChanges();
+  }
+
+  async getTipoOperador(id: string): Promise<Respuesta> {
+    const respuesta = await this.firestore
+      .collection('usuario', (ref) => ref.where('id', '==', id))
+      .get()
+      .toPromise();
+
+    return { exito: true, contenido: respuesta.docs[0].data().cargo };
   }
 
   async comprobarHabilitado(idOperador) {

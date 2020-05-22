@@ -1,0 +1,61 @@
+<div class="col-md-12">
+  <div class="row justify-content-center mt-3 mb-3">
+    <h2 class="font-weight-bold">Cuestionarios</h2>
+  </div>
+  <hr />
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="row ml-4 mr-4">
+        <div id="cuestionarios" class="col-md-12 mt-3 mb-3">
+          <div class="row justify-content-center">
+            <h4 class="font-weight-bold">
+              Cuestionario 1:
+              <span class="text-success">No terminado</span>
+            </h4>
+          </div>
+          <div class="row justify-content-center mb-3">
+            <div class="card" style="width: 40rem;">
+              <div class="card-header">
+                <span class="font-weight-bold">Pregunta</span>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Respuesta 1 - Valor: 1/5
+                </li>
+                <li class="list-group-item">
+                  Respuesta 1 - Valor: 1/5
+                </li>
+                <li class="list-group-item">
+                  Respuesta 1 - Valor: 1/5
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <button id="btnGrafica-${idx}" class="btn btn-outline-dark mb-3">
+              <div class="button-icon">
+                <i class="material-icons-outlined text-primary mr-2"
+                  >bar_chart</i
+                >Mostrar gráfica
+              </div>
+            </button>
+          </div>
+          <div class="row justify-content-center">
+            <button
+              id="btnBorrarRespuestas-${idx}"
+              class="btn btn-outline-dark mb-3"
+            >
+              <div class="button-icon">
+                <i class="material-icons-outlined text-primary mr-2">delete</i
+                >Borrar respuestas
+              </div>
+            </button>
+          </div>
+          <div class="row justify-content-center">
+            <canvas class="d-none" widht="400" height="400" id="chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
