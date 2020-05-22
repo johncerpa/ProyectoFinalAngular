@@ -13,6 +13,21 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.back-btn {
+  top: 1em;
+  left: 1em;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid gainsboro;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  text-decoration: none;
+  background-color: gainsboro;
+}
+
 /* from sombra.css */
 .gmd-3 {
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
