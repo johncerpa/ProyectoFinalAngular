@@ -63,8 +63,8 @@
                 <input id="editar-id" />
               </div>
               <button
-                id="btnCrearCuestionario-${id}"
                 class="btn btn-outline-dark btn-block mt-3"
+                routerLink="/cuestionario"
               >
                 <div class="button-icon">
                   <span
@@ -74,10 +74,7 @@
                   >Crear cuestionario
                 </div>
               </button>
-              <button
-                id="btnVerCuestionarios-${id}"
-                class="btn btn-outline-dark btn-block"
-              >
+              <button class="btn btn-outline-dark btn-block" routerLink="">
                 <div class="button-icon">
                   <span
                     ><i class="material-icons text-primary mr-2"
@@ -86,10 +83,7 @@
                   >Ver cuestionarios
                 </div>
               </button>
-              <button
-                id="btnEditar-${id}"
-                class="btn btn-outline-dark btn-block"
-              >
+              <button class="btn btn-outline-dark btn-block">
                 <div class="button-icon">
                   <span
                     ><i class="material-icons text-warning mr-2">edit</i></span
@@ -97,15 +91,15 @@
                 </div>
               </button>
               <button
-                id="btnHabilitar-${id}"
                 class="btn btn-outline-dark btn-block"
+                (click)="cambiarHabilitado(operador.id)"
               >
                 <div class="button-icon">
                   <span
                     ><i class="material-icons mr-2 text-${clase}"
                       >clear</i
                     ></span
-                  >Habilitado
+                  >Cambiar habilitado
                 </div>
               </button>
             </div>

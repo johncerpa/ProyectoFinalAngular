@@ -10,4 +10,5 @@ export default interface Admin {
   clave?: string;
   id?: string;
   cargo?: string;
+  habilitado?: boolean;
 }

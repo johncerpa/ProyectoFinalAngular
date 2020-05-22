@@ -9,4 +9,5 @@ export default interface Operador {
   clave?: string;
   id?: string;
   cargo?: string;
+  habilitado?: boolean;
 }

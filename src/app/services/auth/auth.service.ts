@@ -1,4 +1,8 @@
-import { Injectable, NgZone } from '@angular/core';
+import {
+  Injectable,
+  NgZone,
+  ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__,
+} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -7,6 +11,7 @@ import { Observable } from 'rxjs';
 import Admin from '../interfaces/admin';
 import Operador from '../interfaces/operador';
 import Respuesta from '../interfaces/respuesta';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +27,7 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone
   ) {
-    this.auth.authState.subscribe((user) => {
+    this.auth.authState.subscribe(async (user) => {
       if (user) {
         this.userAuth = user;
         localStorage.setItem('user', JSON.stringify(this.userAuth));
@@ -32,7 +37,18 @@ export class AuthService {
           localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
         });
 
-        this.router.navigate(['home']);
+        const estaHabilitado = await this.comprobarHabilitado(user.uid);
+
+        if (estaHabilitado) {
+          this.router.navigate(['home']);
+        } else {
+          Swal.fire({
+            title: 'Error!',
+            text: 'Este usuario está deshabilitado',
+            icon: 'error',
+            onClose: () => this.salir(),
+          });
+        }
       } else {
         this.userAuth = null;
       }
@@ -123,6 +139,7 @@ export class AuthService {
           telefono: informacion.telefono,
           id,
           cargo: 'Administrador',
+          habilitado: true,
         });
 
       return { exito: true, contenido: respuestaDoc };
@@ -146,6 +163,7 @@ export class AuthService {
           nombreEmpresa: informacion.nombreEmpresa,
           id,
           cargo: 'Operador',
+          habilitado: true,
         });
 
       return { exito: true, contenido: respuestaDoc };
@@ -174,6 +192,41 @@ export class AuthService {
     return this.firestore
       .collection('usuario', (ref) => ref.where('id', '==', id))
       .valueChanges();
+  }
+
+  async comprobarHabilitado(idOperador) {
+    const respuesta = await this.firestore
+      .collection('usuario', (ref) =>
+        ref.where('id', '==', idOperador).where('habilitado', '==', true)
+      )
+      .get()
+      .toPromise();
+
+    return respuesta.docs.length > 0;
+  }
+
+  async cambiarHabilitado(idOperador: string): Promise<Respuesta> {
+    const respuesta = await this.firestore
+      .collection('usuario', (ref) => ref.where('id', '==', idOperador))
+      .get()
+      .toPromise();
+
+    if (respuesta.docs.length > 0) {
+      const doc = respuesta.docs[0];
+
+      const updateDoc = await this.firestore
+        .doc(`usuario/${doc.id}`)
+        .get()
+        .toPromise();
+
+      if (updateDoc.data().habilitado) {
+        updateDoc.ref.update({ habilitado: false });
+        return { exito: true, contenido: 'El usuario ha sido deshabilitado' };
+      } else {
+        updateDoc.ref.update({ habilitado: true });
+        return { exito: true, contenido: 'El usuario ha sido habilitado' };
+      }
+    }
   }
 
   salir() {
