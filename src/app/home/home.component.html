@@ -66,6 +66,7 @@
               <button
                 class="btn btn-outline-dark btn-block mt-3"
                 routerLink="/cuestionario"
+                (click)="setOperadorActual(operador.id)"
               >
                 <div class="button-icon">
                   <i class="material-icons text-success mr-2"
@@ -73,7 +74,11 @@
                   >Crear cuestionario
                 </div>
               </button>
-              <button class="btn btn-outline-dark btn-block" routerLink="">
+              <button
+                class="btn btn-outline-dark btn-block"
+                routerLink="/verCuestionarios"
+                (click)="setOperadorActual(operador.id)"
+              >
                 <div class="button-icon">
                   <i class="material-icons text-primary mr-2">menu_book</i>Ver
                   cuestionarios

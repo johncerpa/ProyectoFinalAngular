@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AngularFirestoreCollection } from '@angular/fire/firestore/public_api';
 import { AngularFireStorage } from '@angular/fire/storage';
 import Operador from '../interfaces/operador';
+import Respuesta from '../interfaces/respuesta';
 
 @Injectable({
   providedIn: 'root',
@@ -61,5 +62,17 @@ export class UsersService {
       .toPromise();
 
     return url;
+  }
+
+  async crearCuestionario(schema): Promise<Respuesta> {
+    try {
+      const respuestaDoc = await this.firestore
+        .collection<Operador>('cuestionario')
+        .add(schema);
+
+      return { exito: true, contenido: respuestaDoc };
+    } catch (error) {
+      return { exito: false, contenido: error };
+    }
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users/users.service';
 import { AuthService } from '../services/auth/auth.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,11 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public usersService: UsersService,
-    public authService: AuthService
+    public authService: AuthService,
+    private router: Router
   ) {}
+
+  ngOnInit(): void {}
 
   async cambiarHabilitado(idOperador: string) {
     const respuesta = await this.authService.cambiarHabilitado(idOperador);
@@ -30,5 +34,7 @@ export class HomeComponent implements OnInit {
     Swal.fire({ title: 'Exito', text: respuesta.contenido, icon: 'success' });
   }
 
-  ngOnInit(): void {}
+  creatCuestionario(idOperador: string) {
+    this.router.navigate(['cuestionario', idOperador]);
+  }
 }

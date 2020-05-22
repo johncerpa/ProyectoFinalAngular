@@ -9,6 +9,7 @@ import { LoggedInGuard } from './services/guard/logged-in.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupOperatorComponent } from './signup-operator/signup-operator.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { VerCuestionariosComponent } from './ver-cuestionarios/ver-cuestionarios.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ingreso', pathMatch: 'full' },
@@ -31,8 +32,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'cuestionario',
+    path: 'cuestionario/:idOperador',
     component: QuestionsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'verCuestionarios',
+    component: VerCuestionariosComponent,
     canActivate: [AuthGuard],
   },
 ];

@@ -8,7 +8,7 @@
       routerLink="/home"
       class="position-relative back-btn pl-2 pr-3 py-1 d-inline-flex rounded"
     >
-      <span class="material-icons"> keyboard_arrow_left </span
+      <span class="material-icons"> keyboard_arrow_left</span
       ><span>Volver</span>
     </a>
 
@@ -95,7 +95,7 @@
           <hr class="my-5" />
 
           <div class="form-group">
-            <label for="pregunta1" class="d-flex align-items-center"
+            <label for="pregunta2" class="d-flex align-items-center"
               ><span class="material-icons">
                 keyboard_arrow_right
               </span>
@@ -172,7 +172,7 @@
           <hr class="my-5" />
 
           <div class="form-group">
-            <label for="pregunta1" class="d-flex align-items-center"
+            <label for="pregunta3" class="d-flex align-items-center"
               ><span class="material-icons">
                 keyboard_arrow_right
               </span>
@@ -249,7 +249,7 @@
           <hr class="my-5" />
 
           <div class="form-group">
-            <label for="pregunta1" class="d-flex align-items-center"
+            <label for="pregunta4" class="d-flex align-items-center"
               ><span class="material-icons">
                 keyboard_arrow_right
               </span>
@@ -326,7 +326,7 @@
           <hr class="my-5" />
 
           <div class="form-group">
-            <label for="pregunta1" class="d-flex align-items-center"
+            <label for="pregunta5" class="d-flex align-items-center"
               ><span class="material-icons">
                 keyboard_arrow_right
               </span>
@@ -403,7 +403,11 @@
         </div>
 
         <div class="d-flex align-items-center">
-          <button type="submit" class="btn btn-outline-primary d-inline-block">
+          <button
+            type="submit"
+            class="btn btn-outline-primary d-inline-block"
+            (click)="crearCuestionario()"
+          >
             <div class="d-flex align-items-center">
               <i class="material-icons-outlined text-primary mr-2">send</i>
               Crear cuestionario
