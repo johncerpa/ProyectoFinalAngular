@@ -38,3 +38,51 @@ body {
   -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
+
+/* animations */
+
+.left-to-right-animation {
+  animation: from-left 1s ease-in-out;
+}
+
+.right-to-left-animation {
+  animation: from-right 1s ease-in-out;
+}
+
+.fade-animation {
+  animation: fade 1s ease-in-out;
+}
+
+@keyframes from-left {
+  from {
+    opacity: 0;
+    left: -100px;
+  }
+
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes from-right {
+  from {
+    opacity: 0;
+    right: -100px;
+  }
+
+  to {
+    opacity: 1;
+    right: 0;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
