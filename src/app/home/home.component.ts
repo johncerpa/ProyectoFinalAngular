@@ -34,7 +34,11 @@ export class HomeComponent implements OnInit {
     Swal.fire({ title: 'Exito', text: respuesta.contenido, icon: 'success' });
   }
 
-  creatCuestionario(idOperador: string) {
+  crearCuestionario(idOperador: string) {
     this.router.navigate(['cuestionario', idOperador]);
+  }
+
+  verCuestionarios(idOperador: string) {
+    this.router.navigate(['verCuestionarios', idOperador]);
   }
 }

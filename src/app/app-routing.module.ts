@@ -37,7 +37,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'verCuestionarios',
+    path: 'verCuestionarios/:idOperador',
     component: VerCuestionariosComponent,
     canActivate: [AuthGuard],
   },
