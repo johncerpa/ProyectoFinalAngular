@@ -53,6 +53,14 @@ body {
   animation: fade 1s ease-in-out;
 }
 
+.fade-animation-faster {
+  animation: fade 0.5s ease-in-out;
+}
+
+.navbar-animation {
+  animation: navbar 0.5s ease;
+}
+
 @keyframes from-left {
   from {
     opacity: 0;
@@ -74,6 +82,18 @@ body {
   to {
     opacity: 1;
     right: 0;
+  }
+}
+
+@keyframes navbar {
+  from {
+    opacity: 0;
+    top: -30px;
+  }
+
+  to {
+    opacity: 1;
+    top: 0;
   }
 }
 
