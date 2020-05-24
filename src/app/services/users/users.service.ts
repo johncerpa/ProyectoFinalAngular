@@ -67,12 +67,21 @@ export class UsersService {
   async crearCuestionario(schema): Promise<Respuesta> {
     try {
       const respuestaDoc = await this.firestore
-        .collection<Operador>('cuestionario')
+        .collection('cuestionario')
         .add(schema);
 
       return { exito: true, contenido: respuestaDoc };
     } catch (error) {
       return { exito: false, contenido: error };
     }
+  }
+
+  async getCuestionarios(idOperador: string): Promise<Respuesta> {
+    const respuesta = await this.firestore
+      .collection('cuestionario', (ref) => ref.where('id', '==', idOperador))
+      .get()
+      .toPromise();
+
+    return { exito: true, contenido: respuesta };
   }
 }

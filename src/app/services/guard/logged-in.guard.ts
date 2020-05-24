@@ -22,8 +22,9 @@ export class LoggedInGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.authService.estaLogueado()) {
-      //this.router.navigate(['home']);
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo.cargo === 'Operador') {
+      this.router.navigate(['/homeOperador']);
     }
     return true;
   }

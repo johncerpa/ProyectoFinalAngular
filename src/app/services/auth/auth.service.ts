@@ -49,10 +49,12 @@ export class AuthService {
           });
         }
 
-        if (respuestaTipo.contenido === 'Administrador') {
-          this.router.navigate(['home']);
-        } else {
-          this.router.navigate(['homeOperador']);
+        if (router.url === '/ingreso') {
+          if (respuestaTipo.contenido === 'Administrador') {
+            this.router.navigate(['home']);
+          } else {
+            this.router.navigate(['homeOperador']);
+          }
         }
       } else {
         this.userAuth = null;

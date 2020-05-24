@@ -13,13 +13,16 @@ import { VerCuestionariosComponent } from './ver-cuestionarios/ver-cuestionarios
 
 const routes: Routes = [
   { path: '', redirectTo: '/ingreso', pathMatch: 'full' },
-  { path: 'ingreso', component: LoginComponent, canActivate: [LoggedInGuard] },
+  { path: 'ingreso', component: LoginComponent },
   {
     path: 'registro',
     component: SignupComponent,
-    canActivate: [LoggedInGuard],
   },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard, LoggedInGuard],
+  },
   {
     path: 'homeOperador',
     component: HomeOperadorComponent,
@@ -39,7 +42,7 @@ const routes: Routes = [
   {
     path: 'verCuestionarios/:idOperador',
     component: VerCuestionariosComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, LoggedInGuard],
   },
 ];
 
