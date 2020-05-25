@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { UsersService } from '../services/users/users.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-home-operador',
@@ -27,7 +25,7 @@ export class HomeOperadorComponent implements OnInit {
     const docs = respuesta.contenido.docs;
 
     docs.forEach((doc) => {
-      this.cuestionarios.push(doc.data());
+      this.cuestionarios.push({ ...doc.data(), docId: doc.id });
     });
 
     if (this.cuestionarios.length === 0) {

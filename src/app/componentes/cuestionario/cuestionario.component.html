@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+  <h4 class="font-weight-bold">
+    Cuestionario {{ idxCuestionario + 1 }}:
+    <span
+      [ngClass]="{
+        'text-success': cuestionario.terminada,
+        'text-danger': !cuestionario.terminada
+      }"
+      >{{ cuestionario.terminada ? "Respondido" : "No respondido" }}</span
+    >
+  </h4>
+</div>
+<div
+  class="row justify-content-center mb-3"
+  *ngFor="let pregunta of cuestionario.preguntas; let idxPregunta = index"
+>
+  <div class="card" style="width: 40rem;">
+    <div class="card-header">
+      <span class="font-weight-bold">{{ pregunta.texto }}</span>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li
+        class="list-group-item"
+        [ngClass]="{
+          'text-success': pregunta.respuesta1.seleccionada
+        }"
+      >
+        {{ pregunta.respuesta1.texto }}
+      </li>
+      <li
+        class="list-group-item"
+        [ngClass]="{
+          'text-success': pregunta.respuesta2.seleccionada
+        }"
+      >
+        {{ pregunta.respuesta2.texto }}
+      </li>
+      <li
+        class="list-group-item"
+        [ngClass]="{
+          'text-success': pregunta.respuesta3.seleccionada
+        }"
+      >
+        {{ pregunta.respuesta3.texto }}
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row justify-content-center mb-4">
+  <button
+    class="btn btn-outline-dark"
+    (click)="enviarRespuestas(cuestionario.docId, null)"
+  >
+    <div class="button-icon">
+      <span><i class="material-icons-outlined text-primary mr-2">send</i></span
+      >Enviar respuestas
+    </div>
+  </button>
+</div>
