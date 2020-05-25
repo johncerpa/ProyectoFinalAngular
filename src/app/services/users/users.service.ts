@@ -136,4 +136,39 @@ export class UsersService {
       )
       .snapshotChanges();
   }
+
+  async borrarRespuestas(idCuestionario: string): Promise<Respuesta> {
+    const respuesta = await this.firestore
+      .collection('cuestionario')
+      .doc(idCuestionario)
+      .get()
+      .toPromise();
+
+    const cuestionario = respuesta.data();
+
+    const preguntas = [];
+
+    for (let i = 0; i < 5; i++) {
+      const preguntaContenido = cuestionario.preguntas[i];
+
+      for (let j = 0; j < 3; j++) {
+        const pregunta = preguntaContenido[`respuesta${j + 1}`];
+        preguntaContenido[`respuesta${j + 1}`] = {
+          ...pregunta,
+          seleccionada: false,
+        };
+      }
+
+      preguntas[i] = {
+        ...preguntaContenido,
+      };
+    }
+
+    this.firestore
+      .collection('cuestionario')
+      .doc(idCuestionario)
+      .set({ ...cuestionario, preguntas, terminada: false });
+
+    return { exito: true, contenido: 'Respuestas borradas' };
+  }
 }

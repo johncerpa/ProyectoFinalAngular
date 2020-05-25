@@ -30,7 +30,7 @@ export class VerCuestionariosComponent implements OnInit {
     const docs = respuesta.contenido.docs;
 
     docs.forEach((doc) => {
-      this.cuestionarios.push(doc.data());
+      this.cuestionarios.push({ ...doc.data(), docId: doc.id });
     });
 
     if (this.cuestionarios.length === 0) {

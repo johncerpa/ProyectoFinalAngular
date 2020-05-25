@@ -33,13 +33,6 @@ export class NavbarComponent implements OnInit {
             this.primeraVez = false;
           } else {
             if (change.type === 'added') {
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Se creó un cuestionario',
-                showConfirmButton: false,
-                timer: 1500,
-              });
               this.notificaciones.push({
                 fecha: this.obtenerFechaYHora(),
                 mensaje: 'Se creó un cuestionario',
@@ -47,13 +40,6 @@ export class NavbarComponent implements OnInit {
               this.nroNotifs++;
             }
             if (change.type === 'modified') {
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Se modificó un cuestionario',
-                showConfirmButton: false,
-                timer: 2000,
-              });
               this.notificaciones.push({
                 fecha: this.obtenerFechaYHora(),
                 mensaje: 'Se modificó un cuestionario',

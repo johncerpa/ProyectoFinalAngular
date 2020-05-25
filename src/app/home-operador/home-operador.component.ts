@@ -10,6 +10,7 @@ import { UsersService } from '../services/users/users.service';
 export class HomeOperadorComponent implements OnInit {
   idOperador: string;
   cuestionarios = [];
+  mostrarCanvas = false;
 
   constructor(private usersService: UsersService) {}
 

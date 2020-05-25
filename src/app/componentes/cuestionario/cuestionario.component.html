@@ -17,7 +17,10 @@
   (respuestaSeleccionada)="seleccionRespuesta($event)"
 ></app-pregunta>
 
-<div class="row justify-content-center mb-4">
+<div
+  *ngIf="router.url === '/homeOperador'"
+  class="row justify-content-center mb-4"
+>
   <button
     class="btn btn-outline-dark"
     (click)="enviarRespuestas(cuestionario.docId)"
@@ -27,4 +30,29 @@
       >Enviar respuestas
     </div>
   </button>
+</div>
+<div *ngIf="router.url !== '/homeOperador'" class="row justify-content-center">
+  <button class="btn btn-outline-dark mb-3" (click)="mostrarGrafica()">
+    <div class="button-icon">
+      <i class="material-icons-outlined text-primary mr-2">bar_chart</i>Mostrar
+      gráfica
+    </div>
+  </button>
+</div>
+<div *ngIf="router.url !== '/homeOperador'" class="row justify-content-center">
+  <button class="btn btn-outline-dark mb-3" (click)="borrarRespuestas()">
+    <div class="button-icon">
+      <i class="material-icons-outlined text-primary mr-2">delete</i>Borrar
+      respuestas
+    </div>
+  </button>
+</div>
+<div class="row justify-content-center mb-3">
+  <canvas
+    #myCanvas
+    class="d-none"
+    id="canvas-{{ cuestionario.docId }}"
+    widht="400"
+    height="400"
+  ></canvas>
 </div>

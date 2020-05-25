@@ -248,6 +248,32 @@ export class AuthService {
     }
   }
 
+  async actualizarOperador(
+    idOperador: string,
+    informacion
+  ): Promise<Respuesta> {
+    const respuesta = await this.firestore
+      .collection('usuario', (ref) => ref.where('id', '==', idOperador))
+      .get()
+      .toPromise();
+
+    if (respuesta.docs.length > 0) {
+      const doc = respuesta.docs[0];
+
+      const updateDoc = await this.firestore
+        .doc(`usuario/${doc.id}`)
+        .get()
+        .toPromise();
+
+      try {
+        await updateDoc.ref.update(informacion);
+        return { exito: true, contenido: 'El usuario ha sido deshabilitado' };
+      } catch (error) {
+        return { exito: false, contenido: error };
+      }
+    }
+  }
+
   salir() {
     return this.auth.signOut().then(() => {
       localStorage.removeItem('user');
