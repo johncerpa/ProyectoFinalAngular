@@ -16,6 +16,7 @@
           <div class="form-group">
             <label for="primerNombre">Nombre</label>
             <input
+              [(ngModel)]="primerNombre"
               id="primerNombre"
               type="text"
               class="form-control"
@@ -25,6 +26,7 @@
           <div class="form-group">
             <label for="apellido">Apellido</label>
             <input
+              [(ngModel)]="apellido"
               id="apellido"
               type="text"
               class="form-control"
@@ -35,6 +37,7 @@
           <div class="form-group">
             <label for="direccion">Dirección</label>
             <input
+              [(ngModel)]="direccion"
               id="direccion"
               type="text"
               class="form-control"
@@ -47,14 +50,18 @@
               >Se enviará un correo electrónico para el cambio de
               contraseña</small
             >
-            <button id="btnCambiarClave" class="btn btn-dark">
+            <button
+              id="btnCambiarClave"
+              class="btn btn-dark"
+              routerLink="/cambiarClave"
+            >
               Cambiar contraseña
             </button>
           </div>
 
           <div class="d-flex align-items-center mt-5">
             <button
-              id="btnRegistrar"
+              (click)="actualizarOperador()"
               type="submit"
               class="btn btn-outline-primary"
             >

@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
   mostrarSpinner = false;
+  primerNombre = '';
+  apellido = '';
+  direccion = '';
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  actualizarOperador() {}
 }
