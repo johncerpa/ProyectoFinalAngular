@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';

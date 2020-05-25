@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  primeraVez = true;
+  primeraVez: boolean;
   nroNotifs = 0;
   notificaciones = [];
 
@@ -21,6 +21,8 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.primeraVez = true;
+
     const nombreEmpresa = JSON.parse(localStorage.getItem('userInfo'))
       .nombreEmpresa;
 
@@ -28,24 +30,21 @@ export class NavbarComponent implements OnInit {
       .cuestionariosUpdates(nombreEmpresa)
       .subscribe((changes) => {
         changes.forEach((change) => {
-          console.log(change);
-          if (this.primeraVez) {
+          if (change.type === 'added' && !this.primeraVez) {
+            this.notificaciones.push({
+              fecha: this.obtenerFechaYHora(),
+              mensaje: 'Se creó un cuestionario',
+            });
+            this.nroNotifs++;
             this.primeraVez = false;
-          } else {
-            if (change.type === 'added') {
-              this.notificaciones.push({
-                fecha: this.obtenerFechaYHora(),
-                mensaje: 'Se creó un cuestionario',
-              });
-              this.nroNotifs++;
-            }
-            if (change.type === 'modified') {
-              this.notificaciones.push({
-                fecha: this.obtenerFechaYHora(),
-                mensaje: 'Se modificó un cuestionario',
-              });
-              this.nroNotifs++;
-            }
+          }
+
+          if (change.type === 'modified') {
+            this.notificaciones.push({
+              fecha: this.obtenerFechaYHora(),
+              mensaje: 'Se modificó un cuestionario',
+            });
+            this.nroNotifs++;
           }
         });
       });
