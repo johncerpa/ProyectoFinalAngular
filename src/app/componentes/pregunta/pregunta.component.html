@@ -12,6 +12,12 @@
         (click)="seleccionRespuesta(1)"
       >
         {{ pregunta.respuesta1.texto }}
+        <span
+          *ngIf="pregunta.respuesta1.seleccionada && seleccionada"
+          class="material-icons"
+        >
+          done
+        </span>
       </li>
       <li
         class="list-group-item"
@@ -21,6 +27,12 @@
         (click)="seleccionRespuesta(2)"
       >
         {{ pregunta.respuesta2.texto }}
+        <span
+          *ngIf="pregunta.respuesta2.seleccionada && seleccionada"
+          class="material-icons"
+        >
+          done
+        </span>
       </li>
       <li
         class="list-group-item"
@@ -30,6 +42,12 @@
         (click)="seleccionRespuesta(3)"
       >
         {{ pregunta.respuesta3.texto }}
+        <span
+          *ngIf="pregunta.respuesta3.seleccionada && seleccionada"
+          class="material-icons"
+        >
+          done
+        </span>
       </li>
     </ul>
   </div>

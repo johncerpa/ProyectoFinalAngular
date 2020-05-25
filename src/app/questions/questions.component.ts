@@ -98,6 +98,7 @@ export class QuestionsComponent implements OnInit {
     const schema = {
       id: this.route.snapshot.paramMap.get('idOperador'),
       terminada: false,
+      nombreEmpresa: JSON.parse(localStorage.getItem('userInfo')).nombreEmpresa,
       preguntas: [objs[0], objs[1], objs[2], objs[3], objs[4]],
     };
 

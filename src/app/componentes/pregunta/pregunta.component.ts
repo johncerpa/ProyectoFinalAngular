@@ -16,6 +16,8 @@ export class PreguntaComponent implements OnInit {
 
   @Output() respuestaSeleccionada: EventEmitter<PregResp>;
 
+  seleccionada = false;
+
   constructor() {
     this.respuestaSeleccionada = new EventEmitter();
   }
@@ -23,6 +25,26 @@ export class PreguntaComponent implements OnInit {
   ngOnInit(): void {}
 
   seleccionRespuesta(respuesta: number) {
+    this.seleccionada = true;
+
+    if (respuesta === 1) {
+      this.pregunta.respuesta1.seleccionada = true;
+      this.pregunta.respuesta2.seleccionada = false;
+      this.pregunta.respuesta3.seleccionada = false;
+    }
+
+    if (respuesta === 2) {
+      this.pregunta.respuesta1.seleccionada = false;
+      this.pregunta.respuesta2.seleccionada = true;
+      this.pregunta.respuesta3.seleccionada = false;
+    }
+
+    if (respuesta === 3) {
+      this.pregunta.respuesta1.seleccionada = false;
+      this.pregunta.respuesta2.seleccionada = false;
+      this.pregunta.respuesta3.seleccionada = true;
+    }
+
     this.respuestaSeleccionada.emit({ respuesta, pregunta: this.idxPregunta });
   }
 }

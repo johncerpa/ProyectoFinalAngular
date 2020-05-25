@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import Swal from 'sweetalert2';
+import { UsersService } from '../../services/users/users.service';
 
 interface PregResp {
   respuesta: number;
@@ -14,22 +16,44 @@ export class CuestionarioComponent implements OnInit {
   @Input() cuestionario;
   @Input() idxCuestionario;
 
-  preguntas = [];
+  respuestas = [];
 
-  constructor() {}
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {}
 
-  enviarRespuestas(docId: string) {
+  async enviarRespuestas(docId: string) {
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < 5; i++) {
-      if (!this.preguntas[i]) {
-        console.log('Debe responder todas las preguntas');
+      if (!this.respuestas[i]) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Debe responder todas las preguntas',
+          icon: 'error',
+        });
+        return;
       }
     }
+
+    const respuesta = await this.usersService.responderCuestionario(
+      docId,
+      this.respuestas
+    );
+
+    if (!respuesta.exito) {
+      console.log('No se pudo responder');
+      return;
+    }
+
+    Swal.fire({
+      title: 'Exito!',
+      text: 'Cuestionario respondido',
+      icon: 'success',
+      onClose: () => location.reload(),
+    });
   }
 
   seleccionRespuesta(seleccion: PregResp) {
-    this.preguntas[seleccion.pregunta] = seleccion.respuesta;
+    this.respuestas[seleccion.pregunta] = seleccion.respuesta;
   }
 }

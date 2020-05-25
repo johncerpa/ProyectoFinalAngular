@@ -45,12 +45,17 @@
           >Perfil</a
         >
       </li>
-      <li class="nav-item" *ngIf="router.url !== '/homeOperador'">
+      <li
+        class="nav-item"
+        *ngIf="router.url !== '/homeOperador'"
+        (click)="mostrarNotificaciones()"
+        style="cursor: pointer;"
+      >
         <span
           id="nroNotificaciones"
           class="badge badge-pill badge-primary"
           style="float: right; margin-bottom: -10px;"
-          >0</span
+          >{{ nroNotifs }}</span
         >
         <a id="btnNotificaciones" class="nav-link button-icon"
           ><i class="material-icons-outlined text-primary mr-2">notifications</i

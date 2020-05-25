@@ -202,12 +202,15 @@ export class AuthService {
   }
 
   async getTipoOperador(id: string): Promise<Respuesta> {
-    const respuesta = await this.firestore
-      .collection('usuario', (ref) => ref.where('id', '==', id))
-      .get()
-      .toPromise();
-
-    return { exito: true, contenido: respuesta.docs[0].data().cargo };
+    try {
+      const respuesta = await this.firestore
+        .collection('usuario', (ref) => ref.where('id', '==', id))
+        .get()
+        .toPromise();
+      return { exito: true, contenido: respuesta.docs[0].data().cargo };
+    } catch (error) {
+      return { exito: false, contenido: error };
+    }
   }
 
   async comprobarHabilitado(idOperador) {

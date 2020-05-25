@@ -3,7 +3,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { AngularFirestoreCollection } from '@angular/fire/firestore/public_api';
 import { AngularFireStorage } from '@angular/fire/storage';
-import Operador from '../interfaces/operador';
 import Respuesta from '../interfaces/respuesta';
 
 @Injectable({
@@ -83,5 +82,58 @@ export class UsersService {
       .toPromise();
 
     return { exito: true, contenido: respuesta };
+  }
+
+  async responderCuestionario(
+    cuestionarioId: string,
+    respuestas: any[]
+  ): Promise<Respuesta> {
+    const respuesta = await this.firestore
+      .collection('cuestionario')
+      .doc(cuestionarioId)
+      .get()
+      .toPromise();
+
+    const cuestionario = respuesta.data();
+
+    const preguntas = [];
+
+    for (let i = 0; i < 5; i++) {
+      const preguntaContenido = cuestionario.preguntas[i];
+
+      for (let j = 0; j < 3; j++) {
+        const pregunta = preguntaContenido[`respuesta${j + 1}`];
+        preguntaContenido[`respuesta${j + 1}`] = {
+          ...pregunta,
+          seleccionada: false,
+        };
+      }
+
+      const idxRespuesta = `respuesta${respuestas[i]}`;
+      const respuestaSeleccionada = cuestionario.preguntas[i][idxRespuesta];
+
+      preguntas[i] = {
+        ...preguntaContenido,
+        [idxRespuesta]: {
+          ...respuestaSeleccionada,
+          seleccionada: true,
+        },
+      };
+    }
+
+    await this.firestore
+      .collection('cuestionario')
+      .doc(cuestionarioId)
+      .set({ ...cuestionario, preguntas, terminada: true });
+
+    return { exito: true, contenido: 'Cuestionario respondido con éxito' };
+  }
+
+  cuestionariosUpdates(nombreEmpresa: string) {
+    return this.firestore
+      .collection('cuestionario', (ref) =>
+        ref.where('nombreEmpresa', '==', nombreEmpresa)
+      )
+      .snapshotChanges();
   }
 }
