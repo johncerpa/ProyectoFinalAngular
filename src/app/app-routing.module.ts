@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignupOperatorComponent } from './signup-operator/signup-operator.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { VerCuestionariosComponent } from './ver-cuestionarios/ver-cuestionarios.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ingreso', pathMatch: 'full' },
@@ -44,6 +45,7 @@ const routes: Routes = [
     component: VerCuestionariosComponent,
     canActivate: [AuthGuard, LoggedInGuard],
   },
+  { path: 'editar', component: EditComponent },
 ];
 
 @NgModule({
