@@ -19,6 +19,7 @@ import { HomeOperadorComponent } from './home-operador/home-operador.component';
 import { VerCuestionariosComponent } from './ver-cuestionarios/ver-cuestionarios.component';
 import { CuestionarioComponent } from './componentes/cuestionario/cuestionario.component';
 import { EditComponent } from './edit/edit.component';
+import { PreguntaComponent } from './componentes/pregunta/pregunta.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { EditComponent } from './edit/edit.component';
     VerCuestionariosComponent,
     CuestionarioComponent,
     EditComponent,
+    PreguntaComponent,
   ],
   imports: [
     BrowserModule,

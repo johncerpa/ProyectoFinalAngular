@@ -41,4 +41,8 @@ export class HomeComponent implements OnInit {
   verCuestionarios(idOperador: string) {
     this.router.navigate(['verCuestionarios', idOperador]);
   }
+
+  editarOperador(idOperador: string) {
+    this.router.navigate(['editar', idOperador]);
+  }
 }

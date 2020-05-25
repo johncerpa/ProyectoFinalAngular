@@ -45,7 +45,7 @@ const routes: Routes = [
     component: VerCuestionariosComponent,
     canActivate: [AuthGuard, LoggedInGuard],
   },
-  { path: 'editar', component: EditComponent },
+  { path: 'editar/:idOperador', component: EditComponent },
 ];
 
 @NgModule({

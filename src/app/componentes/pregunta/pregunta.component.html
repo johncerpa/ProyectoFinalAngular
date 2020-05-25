@@ -1,0 +1,36 @@
+<div class="row justify-content-center mb-3">
+  <div class="card" style="width: 40rem;">
+    <div class="card-header">
+      <span class="font-weight-bold">{{ pregunta.texto }}</span>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li
+        class="list-group-item"
+        [ngClass]="{
+          'text-success': pregunta.respuesta1.seleccionada
+        }"
+        (click)="seleccionRespuesta(1)"
+      >
+        {{ pregunta.respuesta1.texto }}
+      </li>
+      <li
+        class="list-group-item"
+        [ngClass]="{
+          'text-success': pregunta.respuesta2.seleccionada
+        }"
+        (click)="seleccionRespuesta(2)"
+      >
+        {{ pregunta.respuesta2.texto }}
+      </li>
+      <li
+        class="list-group-item"
+        [ngClass]="{
+          'text-success': pregunta.respuesta3.seleccionada
+        }"
+        (click)="seleccionRespuesta(3)"
+      >
+        {{ pregunta.respuesta3.texto }}
+      </li>
+    </ul>
+  </div>
+</div>
