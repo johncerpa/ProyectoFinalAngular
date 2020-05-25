@@ -1,0 +1,97 @@
+<div class="row no-gutters">
+  <div class="col-12 col-md-7 mb-5 fade-animation">
+    <a
+      routerLink="/home"
+      class="position-relative back-btn pl-2 pr-3 py-1 d-inline-flex rounded"
+    >
+      <span class="material-icons"> keyboard_arrow_left </span
+      ><span>Volver</span>
+    </a>
+
+    <div class="row no-gutters justify-content-center mt-4 mb-5">
+      <div class="col-10 col-md-8">
+        <div>
+          <h2 class="mb-4">Editar Operador</h2>
+          <hr />
+          <div class="form-group">
+            <label for="primerNombre">Nombre</label>
+            <input
+              id="primerNombre"
+              type="text"
+              class="form-control"
+              placeholder="Escribe nombre"
+            />
+          </div>
+          <div class="form-group">
+            <label for="apellido">Apellidos</label>
+            <input
+              id="apellido"
+              type="text"
+              class="form-control"
+              placeholder="Escribe apellidos"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="correo">Correo electrónico</label>
+            <input
+              id="correo"
+              type="email"
+              class="form-control"
+              placeholder="Escribe nuevo correo electrónico"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input
+              id="direccion"
+              type="text"
+              class="form-control"
+              placeholder="Escribe nueva dirección"
+            />
+          </div>
+
+          <div class="form-group">
+            <small class="form-text text-muted mb-1"
+              >Se enviará un correo electrónico para el cambio de
+              contraseña</small
+            >
+            <button id="btnCambiarClave" class="btn btn-dark">
+              Cambiar contraseña
+            </button>
+          </div>
+
+          <div class="form-group">
+            <label for="imagen">Imagen empresarial</label>
+            <input
+              #imagenInput
+              id="imagen"
+              type="file"
+              accept="image/*"
+              class="form-control-file"
+            />
+          </div>
+
+          <div class="d-flex align-items-center mt-5">
+            <button
+              id="btnRegistrar"
+              type="submit"
+              class="btn btn-outline-primary"
+            >
+              Actualizar
+            </button>
+            <div
+              style="margin-left: 30px;"
+              id="spinner"
+              class="spinner-border text-primary"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="d-none d-md-block col-md-5 edit__image vh-100 position-fixed right-to-left-animation"
+  ></div>
+</div>

@@ -18,6 +18,7 @@ import { SignupOperatorComponent } from './signup-operator/signup-operator.compo
 import { QuestionsComponent } from './questions/questions.component';
 import { HomeOperadorComponent } from './home-operador/home-operador.component';
 import { VerCuestionariosComponent } from './ver-cuestionarios/ver-cuestionarios.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { VerCuestionariosComponent } from './ver-cuestionarios/ver-cuestionarios
     QuestionsComponent,
     HomeOperadorComponent,
     VerCuestionariosComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
