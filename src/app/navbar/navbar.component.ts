@@ -21,8 +21,6 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.primeraVez = true;
-
     const nombreEmpresa = JSON.parse(localStorage.getItem('userInfo'))
       .nombreEmpresa;
 
@@ -30,15 +28,6 @@ export class NavbarComponent implements OnInit {
       .cuestionariosUpdates(nombreEmpresa)
       .subscribe((changes) => {
         changes.forEach((change) => {
-          if (change.type === 'added' && !this.primeraVez) {
-            this.notificaciones.push({
-              fecha: this.obtenerFechaYHora(),
-              mensaje: 'Se creó un cuestionario',
-            });
-            this.nroNotifs++;
-            this.primeraVez = false;
-          }
-
           if (change.type === 'modified') {
             this.notificaciones.push({
               fecha: this.obtenerFechaYHora(),
