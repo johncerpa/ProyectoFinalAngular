@@ -11,6 +11,7 @@ import { SignupOperatorComponent } from './signup-operator/signup-operator.compo
 import { QuestionsComponent } from './questions/questions.component';
 import { VerCuestionariosComponent } from './ver-cuestionarios/ver-cuestionarios.component';
 import { EditComponent } from './edit/edit.component';
+import { PasswordComponent } from './password/password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ingreso', pathMatch: 'full' },
@@ -46,6 +47,7 @@ const routes: Routes = [
     canActivate: [AuthGuard, LoggedInGuard],
   },
   { path: 'editar/:idOperador', component: EditComponent },
+  {path: 'password', component: PasswordComponent}
 ];
 
 @NgModule({

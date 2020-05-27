@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { UsersService } from '../services/users/users.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-questions',
@@ -12,8 +13,13 @@ export class QuestionsComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _location: Location
   ) {}
+
+  back() {
+    this._location.back();
+  }
 
   ngOnInit(): void {}
 

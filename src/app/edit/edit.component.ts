@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
+import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,8 +18,13 @@ export class EditComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private activRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _location: Location
   ) {}
+
+  back() {
+    this._location.back();
+  }
 
   ngOnInit(): void {}
 

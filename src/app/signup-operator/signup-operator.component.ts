@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import Operador from '../services/interfaces/operador';
 import { validarOperador } from '../services/utils/validar';
 import Swal from 'sweetalert2';
@@ -23,7 +24,15 @@ export class SignupOperatorComponent implements OnInit {
   // Vista
   mostrarSpinner = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private _location: Location
+  ) {}
+
+  back() {
+    this._location.back();
+  }
 
   ngOnInit(): void {}
 

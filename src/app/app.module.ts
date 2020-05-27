@@ -20,6 +20,7 @@ import { VerCuestionariosComponent } from './ver-cuestionarios/ver-cuestionarios
 import { CuestionarioComponent } from './componentes/cuestionario/cuestionario.component';
 import { EditComponent } from './edit/edit.component';
 import { PreguntaComponent } from './componentes/pregunta/pregunta.component';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PreguntaComponent } from './componentes/pregunta/pregunta.component';
     CuestionarioComponent,
     EditComponent,
     PreguntaComponent,
+    PasswordComponent,
   ],
   imports: [
     BrowserModule,

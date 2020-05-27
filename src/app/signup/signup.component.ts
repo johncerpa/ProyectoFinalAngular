@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { validarAdmin } from '../services/utils/validar';
 import Admin from '../services/interfaces/admin';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
@@ -25,7 +26,11 @@ export class SignupComponent implements OnInit {
   // Vista
   mostrarSpinner = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private _location: Location
+  ) {}
 
   async registrar() {
     this.mostrarSpinner = true;
@@ -96,6 +101,10 @@ export class SignupComponent implements OnInit {
     }
 
     return tipo.value;
+  }
+
+  back() {
+    this._location.back();
   }
 
   ngOnInit(): void {}
