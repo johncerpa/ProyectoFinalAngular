@@ -274,6 +274,24 @@ export class AuthService {
     }
   }
 
+  async cambiarClave(correo: string): Promise<Respuesta> {
+    return this.auth
+      .sendPasswordResetEmail(correo)
+      .then(() => {
+        return {
+          exito: true,
+          contenido:
+            'El correo ha sido enviado con éxito, puedes revisar tu bandeja y cambiar tu contraseña',
+        };
+      })
+      .catch((error) => {
+        return {
+          exito: false,
+          contenido: `No se ha podido enviar el correo, intentalo nuevamente. ${error.code}, ${error.message}`,
+        };
+      });
+  }
+
   salir() {
     return this.auth.signOut().then(() => {
       localStorage.removeItem('user');
