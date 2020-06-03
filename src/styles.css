@@ -8,6 +8,20 @@ body {
   font-family: "Apercu";
 }
 
+.nav-item {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
 .button-icon {
   display: flex;
   justify-content: center;
@@ -26,17 +40,7 @@ body {
 .back-btn:hover {
   text-decoration: none;
   background-color: gainsboro;
-}
-
-/* from sombra.css */
-.gmd-3 {
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-    0 6px 6px rgba(0, 0, 0, 0.23);
-  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-    0 6px 6px rgba(0, 0, 0, 0.23);
-  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  cursor: pointer;
 }
 
 /* animations */

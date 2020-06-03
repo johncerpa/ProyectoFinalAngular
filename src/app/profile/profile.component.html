@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container-fluid fade-animation-faster">
-  <div class="container gmd-3 rounded pt-3 pb-3 mb-3">
+  <div class="container shadow rounded pt-3 pb-3 mb-3">
     <div *ngIf="!authService.userInfo" class="col-md-12">
       <div class="row justify-content-center">
         <div class="spinner-border text-primary"></div>
@@ -17,7 +17,7 @@
           id="imagen"
           style="height: 200px; width: 200px;"
           src="{{ usersService.imagenPerfil }}"
-          class="rounded-circle img-fluid img-thumbnail border-danger"
+          class="rounded-circle img-fluid img-thumbnail border-gray shadow-sm"
         />
       </div>
       <div id="nroEmpleados" class="row justify-content-center mb-3">
