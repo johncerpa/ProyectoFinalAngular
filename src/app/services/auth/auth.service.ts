@@ -75,11 +75,11 @@ export class AuthService {
       informacion.clave
     );
 
-    const userId = respuesta.contenido.user.uid;
-
     if (!respuesta.exito) {
       return respuesta;
     }
+
+    const userId = respuesta.contenido.user.uid;
 
     respuesta = await this.crearDocAdmin(informacion, userId);
 
