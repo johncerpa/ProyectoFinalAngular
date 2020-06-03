@@ -47,7 +47,7 @@ import { PasswordComponent } from './password/password.component';
     AngularFireAnalyticsModule,
     FormsModule,
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

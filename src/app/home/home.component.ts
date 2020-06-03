@@ -16,7 +16,9 @@ export class HomeComponent implements OnInit {
     public usersService: UsersService,
     public authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+    this.usersService.getInfo();
+  }
 
   ngOnInit(): void {}
 

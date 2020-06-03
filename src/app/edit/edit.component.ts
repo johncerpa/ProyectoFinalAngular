@@ -38,7 +38,7 @@ export class EditComponent implements OnInit {
     }
 
     if (this.apellido.length !== 0) {
-      informacion['apellido'] = this.primerNombre;
+      informacion['apellido'] = this.apellido;
     }
 
     if (this.direccion.length !== 0) {

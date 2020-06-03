@@ -20,10 +20,12 @@ export class UsersService {
     private storage: AngularFireStorage
   ) {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-
-    this.getOperadores(userInfo.nombreEmpresa);
-
     this.getImagenPerfil(userInfo.id);
+  }
+
+  async getInfo() {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    this.getOperadores(userInfo.nombreEmpresa);
   }
 
   async getImagenPerfil(userId) {

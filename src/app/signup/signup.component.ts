@@ -36,14 +36,14 @@ export class SignupComponent implements OnInit {
     this.mostrarSpinner = true;
 
     const informacion: Admin = {
-      primerNombre: this.primerNombre,
-      apellido: this.apellido,
+      primerNombre: this.primerNombre.trim(),
+      apellido: this.apellido.trim(),
       tipoDocumento: this.obtenerTipo(),
-      numeroDocumento: this.numeroDocumento,
-      telefono: this.telefono,
-      nombreEmpresa: this.nombreEmpresa,
+      numeroDocumento: this.numeroDocumento.trim(),
+      telefono: this.telefono.trim(),
+      nombreEmpresa: this.nombreEmpresa.trim(),
       imagen: this.imagen,
-      correo: this.correo,
+      correo: this.correo.trim(),
       clave: this.clave,
     };
 

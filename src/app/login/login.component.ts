@@ -15,7 +15,10 @@ export class LoginComponent implements OnInit {
   constructor(public authService: AuthService, private router: Router) {}
 
   async ingresar() {
-    const respuesta = await this.authService.ingresar(this.correo, this.clave);
+    const respuesta = await this.authService.ingresar(
+      this.correo.trim(),
+      this.clave.trim()
+    );
 
     if (!respuesta.exito) {
       let mensaje = '';

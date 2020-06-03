@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  NgZone,
-  ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__,
-} from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -73,29 +69,6 @@ export class AuthService {
       });
   }
 
-  async registrarOperador(informacion: Operador) {
-    let respuesta = await this.crearUsuarioEnFb(
-      informacion.correo,
-      informacion.clave
-    );
-
-    const userId = respuesta.contenido.user.uid;
-
-    if (!respuesta.exito) {
-      return respuesta;
-    }
-
-    respuesta = await this.crearDocOperador(informacion, userId);
-
-    if (!respuesta.exito) {
-      return respuesta;
-    }
-
-    respuesta = await this.subirImagen(informacion.imagen, userId);
-
-    return respuesta;
-  }
-
   async registrarAdmin(informacion: Admin): Promise<Respuesta> {
     let respuesta = await this.crearUsuarioEnFb(
       informacion.correo,
@@ -146,30 +119,6 @@ export class AuthService {
           telefono: informacion.telefono,
           id,
           cargo: 'Administrador',
-          habilitado: true,
-        });
-
-      return { exito: true, contenido: respuestaDoc };
-    } catch (error) {
-      return { exito: false, contenido: error };
-    }
-  }
-
-  async crearDocOperador(
-    informacion: Operador,
-    id: string
-  ): Promise<Respuesta> {
-    try {
-      const respuestaDoc = await this.firestore
-        .collection<Operador>('usuario')
-        .add({
-          primerNombre: informacion.primerNombre,
-          apellido: informacion.apellido,
-          direccion: informacion.direccion,
-          correo: informacion.correo,
-          nombreEmpresa: informacion.nombreEmpresa,
-          id,
-          cargo: 'Operador',
           habilitado: true,
         });
 

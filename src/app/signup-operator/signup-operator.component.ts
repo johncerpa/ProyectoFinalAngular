@@ -6,6 +6,7 @@ import Operador from '../services/interfaces/operador';
 import { validarOperador } from '../services/utils/validar';
 import Swal from 'sweetalert2';
 import Respuesta from '../services/interfaces/respuesta';
+import { SignUpService } from '../services/auth/signup.service';
 
 @Component({
   selector: 'app-signup-operator',
@@ -26,12 +27,13 @@ export class SignupOperatorComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private signUpService: SignUpService,
     private router: Router,
-    private _location: Location
+    private location: Location
   ) {}
 
   back() {
-    this._location.back();
+    this.location.back();
   }
 
   ngOnInit(): void {}
@@ -62,7 +64,7 @@ export class SignupOperatorComponent implements OnInit {
       return;
     }
 
-    const respuesta: Respuesta = await this.authService.registrarOperador(
+    const respuesta: Respuesta = await this.signUpService.registrarOperador(
       informacion
     );
 
@@ -86,7 +88,10 @@ export class SignupOperatorComponent implements OnInit {
       title: 'Exito!',
       text: 'El usuario ha sido registrado',
       icon: 'success',
-      onClose: () => this.router.navigate(['home']),
+      onClose: () =>
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => this.router.navigate(['/home'])),
     });
   }
 
