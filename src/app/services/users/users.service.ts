@@ -45,6 +45,7 @@ export class UsersService {
 
     this.operadores.subscribe((lista) => {
       this.nroOperadores = lista.length;
+      this.imagenes = [];
       this.getImagenes(lista);
     });
   }
