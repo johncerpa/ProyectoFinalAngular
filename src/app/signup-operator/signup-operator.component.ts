@@ -88,10 +88,7 @@ export class SignupOperatorComponent implements OnInit {
       title: 'Exito!',
       text: 'El usuario ha sido registrado',
       icon: 'success',
-      onClose: () =>
-        this.router
-          .navigateByUrl('/', { skipLocationChange: true })
-          .then(() => this.router.navigate(['/home'])),
+      onClose: () => this.router.navigate(['/home']),
     });
   }
 
