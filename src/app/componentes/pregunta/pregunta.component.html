@@ -5,13 +5,13 @@
     </div>
     <ul class="list-group list-group-flush">
       <li
-        class="list-group-item"
+        class="list-group-item d-flex align-items-center"
         [ngClass]="{
           'text-success': pregunta.respuesta1.seleccionada
         }"
         (click)="seleccionRespuesta(1)"
       >
-        {{ pregunta.respuesta1.texto }}
+        <span class="mr-3">{{ pregunta.respuesta1.texto }}</span>
         <span
           *ngIf="pregunta.respuesta1.seleccionada && seleccionada"
           class="material-icons"
@@ -20,13 +20,13 @@
         </span>
       </li>
       <li
-        class="list-group-item"
+        class="list-group-item d-flex align-items-center"
         [ngClass]="{
           'text-success': pregunta.respuesta2.seleccionada
         }"
         (click)="seleccionRespuesta(2)"
       >
-        {{ pregunta.respuesta2.texto }}
+        <span class="mr-3">{{ pregunta.respuesta2.texto }}</span>
         <span
           *ngIf="pregunta.respuesta2.seleccionada && seleccionada"
           class="material-icons"
@@ -35,13 +35,13 @@
         </span>
       </li>
       <li
-        class="list-group-item"
+        class="list-group-item d-flex align-items-center"
         [ngClass]="{
           'text-success': pregunta.respuesta3.seleccionada
         }"
         (click)="seleccionRespuesta(3)"
       >
-        {{ pregunta.respuesta3.texto }}
+        <span class="mr-3">{{ pregunta.respuesta3.texto }}</span>
         <span
           *ngIf="pregunta.respuesta3.seleccionada && seleccionada"
           class="material-icons"

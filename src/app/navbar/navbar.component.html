@@ -26,7 +26,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li
-        class="nav-item my-1 my-md-0 mx-md-1 shadow-sm"
+        class="nav-item shadow-btn my-1 my-md-0 mx-md-1 shadow-sm"
         routerLinkActive="active"
         *ngIf="router.url !== '/homeOperador'"
       >
@@ -36,7 +36,7 @@
         >
       </li>
       <li
-        class="nav-item my-1 my-md-0 mx-md-1 shadow-sm"
+        class="nav-item shadow-btn my-1 my-md-0 mx-md-1 shadow-sm"
         routerLinkActive="active"
         *ngIf="router.url !== '/homeOperador'"
       >
@@ -46,7 +46,7 @@
         >
       </li>
       <li
-        class="nav-item my-1 my-md-0 mx-md-1 shadow-sm"
+        class="nav-item shadow-btn my-1 my-md-0 mx-md-1 shadow-sm"
         *ngIf="router.url !== '/homeOperador'"
         (click)="mostrarNotificaciones()"
         style="cursor: pointer;"
@@ -65,12 +65,13 @@
     </ul>
     <button
       id="btnSalir"
-      class="btn btn-outline-dark my-2 my-md-0"
+      class="btn shadow-sm shadow-btn gainsboro my-2 my-md-0"
       type="submit"
       (click)="salir()"
     >
       <div class="button-icon">
-        <i class="material-icons-outlined text-danger mr-2">exit_to_app</i>Salir
+        <span class="material-icons-outlined text-danger mr-2">exit_to_app</span
+        >Salir
       </div>
     </button>
   </div>
